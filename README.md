@@ -1,8 +1,9 @@
+## [Open in browser!](https://kevinsmith115.github.io/js-Calculator/)
+
+
 This is a basic calculator created with Vanilla JS, HTML & CSS
 
 
-
-
-![Default](/images/default.png)
+<br>
 
 ![In use](/images/active.png)
