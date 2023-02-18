@@ -9,6 +9,7 @@ class Calculator {
         this.currentOperand = ''
         this.previousOperand = ''
         this.operation = undefined
+        this.error = ""
     }
 
     delete() {
@@ -16,6 +17,9 @@ class Calculator {
     }
 
     appendNumber(number) {
+        if (this.error) {
+            this.clear();
+        } 
         if (number === '.' && this.currentOperand.includes('.')) return
         this.currentOperand = this.currentOperand.toString() + number.toString()
     }
@@ -46,6 +50,7 @@ class Calculator {
                 computation = prev * current
                 break
             case '÷':
+                if (current === 0) this.error = "Can't divide by zero";
                 computation = prev / current
                 break
             default:
@@ -75,6 +80,10 @@ class Calculator {
     }
 
     updateDisplay() {
+        if (this.error) {
+            this.currentOperandTextElement.innerText = this.error;
+            return
+          }
         this.currentOperandTextElement.innerText = this.getDisplayNumber(this.currentOperand)
         if (this.operation != null) {
             this.previousOperandTextElement.innerText =
